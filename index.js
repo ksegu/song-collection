@@ -106,6 +106,18 @@ app.get("/songs/R&BSongs",function(req,res) {
   });
 });
 
+
+
+// display all songs with of the current year working!!
+app.get("/songs/HipHopSongs",function(req,res) {
+  Song.find({genre: "Hip Hop"},function(err,songs){
+    if(err) throw err;
+    res.render('show',{
+        songs:songs
+    });
+  });
+});
+
 // display all songs with of the current year working!!
 app.get("/songs/thisYear",function(req,res) {
   const date = new Date();
