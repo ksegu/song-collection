@@ -1,0 +1,20 @@
+<div id="searchBox">
+    <input type="text" id="search" placeholder="Search">
+</div>
+
+<h1>Songs</h1>
+{{#if songs}}
+    {{#each songs}}
+    <div class ="song">
+            <div class="details">
+                <h4>{{this.name}} - {{this.artists}}</h4>
+            </div>
+      </div>
+    {{/each}}
+    <p id="searchFail">No matches found</p>
+    <br>
+    <br>
+    <a href="/addSong" class="addBox">Add a Song</a>
+{{else}}
+    <p>No Songs found</p>
+{{/if}}

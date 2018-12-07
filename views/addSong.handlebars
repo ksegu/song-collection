@@ -1,0 +1,42 @@
+<div id="featured">
+            <div class="container">
+                <div class="title">
+                    <h1 style = " padding: 40px; text-align: center"> Add a new Song </h1>
+                </div> <br><br>
+
+                <article>
+                    <form method="POST" action="/addSong">
+
+                        <div class="input-field">
+                            <label> Song name:</label> <br>
+                            <input required type="text" name="name" size="100" placeholder="Song Name" autofocus >
+                        </div> </br>
+
+                        <div class="input-field">
+                            <label> Artists Name:</label> <br>
+                            <input required type="text" name="artists" size="100" placeholder="Artists Names">
+                        </div></br>
+
+                         <div class="input-field">
+                            <label> Year:</label> <br>
+                            <input required type="text" name="year" size="100" placeholder="Song Year" >
+                        </div> </br>
+
+                        <div class="input-field">
+                            <label> Rating:</label> <br>
+                            <input required type="number" name="rating"  placeholder="Enter Rating">
+                        </div> <br>
+
+                        <div class="input-field">
+                            <label> Genre:</label> <br>
+                            <input required type="text" name="genre"  placeholder="Enter genre ">
+                        </div> <br>
+
+                        <ul class="actions" style = "text-align:center;">
+                            <button type="submit" style = "text-align:center;"> Add this Song </button>
+                        </ul>
+                    </form>
+                </article>
+            </div>
+
+        </div>

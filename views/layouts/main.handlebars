@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/public/css/main.css">
+    <title>Final Project</title>
+</head>
+<body>
+  <a href="/" class="nav" id="home">Home</a>
+  <a href="/songs/oldSongs" class="nav">Old Songs</a>
+  <a href="/songs/thisYear" class="nav">New Songs</a>
+  <a href="/songs/topSongs" class="nav">Top Rated Songs</a>
+  <a href="/songs/R&BSongs" class="nav">R&B Songs</a>
+  <br>
+  <br>
+    {{{body}}}
+</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+function search() {
+    $("#search").on('keyup', function () {
+        var count = $(".song").length
+        console.log(count);
+       $(".song").each(function(index) {
+            if (!$(this).text().toUpperCase().includes($("#search").val().toUpperCase())) {
+                $(this).hide()
+                count--
+            }
+            else {
+                $(this).show()
+                count++
+            }
+            if (count == 0) {
+               $('#searchFail').show()
+            }
+            else {
+                $("#searchFail").hide()
+            }
+       })
+    })
+}
+
+
+$(document).ready(function() {
+    search();
+})
+
+</script>

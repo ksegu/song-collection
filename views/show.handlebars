@@ -1,0 +1,15 @@
+<h1>Songs</h1>
+{{#if songs}}
+    {{#each songs}}
+            <div class="details">
+                <h2 class="name">{{this.name}} - {{this.year}}</h2>
+            </div>
+        </div>
+
+    {{/each}}
+    <br>
+    <br>
+    <a href="/addSong" class="addBox">Add a Song</a>
+{{else}}
+    <p>No Songs found</p>
+{{/if}}
