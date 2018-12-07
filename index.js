@@ -56,21 +56,22 @@ app.get('/addSong', function(req, res) {
 
 // posts song but mongo crashes after addding data
 app.post('/api/addSong', function(req,res) {
+  console.log((req.body));
   if(!req.body) {
       return res.send('request body is missing');
+  } else {
+    let model = new Song({
+      name: req.body.name,
+      artists: req.body.artists,
+      year: req.body.year,
+      rating: req.body.rating,
+      genre: req.body.genre
+    });
+    model.save(function(err){
+      if(err) throw err;
+      return res.send('your song was successfully added!');
+    })
   }
-  let model = new Song({
-    name: req.body.name,
-    artists: req.body.artists,
-    year: req.body.year,
-    rating: req.body.rating,
-    genre: req.body.genre
-  });
-  model.save(function(err){
-    console.log(err);
-    res.send("Object missing fields or wrong format, couldnt add to DB");
-  })
-    return res.send('your song was successfully added!');
 });
 
 // At the home / route, you should display every data point in an HTML Page.
