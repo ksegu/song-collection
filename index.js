@@ -30,11 +30,6 @@ mongoose.connect(mongodb,{useNewUrlParser: true});
  */
 
 
-
-
-
-
-
 // post a song via html Form, working
 
 app.get('/addSong', function(req, res) {
@@ -180,13 +175,10 @@ app.get("/songs/oldSongs",function(req,res) {
 app.get('/songs/topSongs', function (req, res) {
     Song.find({rating: {$gt : 5}}, function (err, songs) {
         if (err) throw err;
-        if (!songs || songs.length===0) return res.render('404');
-        else {
-            res.render("show", {
-                h1: "Top Rated Songs",
-                songs: songs,
-            });
-        }
+          res.render("show", {
+              h1: "Top Rated Songs",
+              songs: songs,
+          });
     });
 });
 
