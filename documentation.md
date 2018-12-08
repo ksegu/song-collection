@@ -87,16 +87,26 @@ request(options, function (error, response, body) {
 
 GET endpoint route: `/api/getSongs`
 
+## user query input year, rating or genre to get json data for query
+GET endpoint route:`/api/getSongsByYear`
+GET endpoint route: `/api/getSongsByRating`
+GET endpoint route: `/api/getSongsByGenre`
+
+
 ### 4. Search Data
 
 Search Field: name
 
-### 5. Navigation Pages
+### 5. Remove Data
+## user queries name of song in url to remove that song from DB, returns null reponse from insomnia
+ remove ->   ` /removeSong  `
+
+### 6. Navigation Pages
 
 Navigation Filters
 1. get Songs/home -> `/ `
 2. R&B Songs -> `/songs/R&BSongs `
 3. Songs from this Year -> ` /songs/thisYear  `
 4. Songs before 1990 -> `  songs/oldSongs  `
-5. songs with rating above 5 -> `  songs/topSongs  `
-6. remove ->   ` /removeSong  `
+5. songs with rating above 5 -> `  songs/topSongs`
+6. HipHop Songs -> `  songs/HipHopSongs`

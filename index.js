@@ -29,30 +29,18 @@ mongoose.connect(mongodb,{useNewUrlParser: true});
  * endpoints for the API, and 5 others.
  */
 
-// POST a new song with api route, working fine
-app.post('/api/addSong', function(req,res) {
-  if(!req.body) {
-      return res.send('request body is missing');
-  }
-  let model = new Song({
-    name: req.body.name,
-    artists: req.body.artists,
-    year: req.body.year,
-    rating: req.body.rating,
-    genre: req.body.genre
-  });
-  model.save(function(err){
-    console.log(err);
-    res.send("Object missing fields or wrong format, couldnt add to DB");
-  })
-    return res.send('your song was successfully added!');
-});
+
+
+
+
+
 
 // post a song via html Form, working
 
 app.get('/addSong', function(req, res) {
     res.render('addSong', {})
 })
+
 
 // posts song but mongo crashes after addding data
 app.post('/api/addSong', function(req,res) {
@@ -69,10 +57,12 @@ app.post('/api/addSong', function(req,res) {
     });
     model.save(function(err){
       if(err) throw err;
-      return res.send('your song was successfully added!');
+      res.send('your song was successfully added!');
     })
   }
 });
+
+
 
 // At the home / route, you should display every data point in an HTML Page.
 // working!!
@@ -90,6 +80,49 @@ app.get("/", function (req, res) {
 // working!!
 app.get('/api/getSongs', function (req, res) {
     Song.find({}, function (err, songs) {
+        if (err) throw err;
+        res.json(songs);
+    });
+});
+
+
+
+app.get('/api/getSongsByYear', function (req, res) {
+
+  year = req.query.year;
+  if(!year) {
+    res.send("missing year");
+  }
+
+    Song.find({year:year}, function (err, songs) {
+        if (err) throw err;
+        res.json(songs);
+    });
+});
+
+
+app.get('/api/getSongsByRating', function (req, res) {
+
+  rating = req.query.rating;
+  if(!rating) {
+    res.send("missing rating");
+  }
+
+    Song.find({rating:rating}, function (err, songs) {
+        if (err) throw err;
+        res.json(songs);
+    });
+});
+
+
+app.get('/api/getSongsByGenre', function (req, res) {
+
+  genre = req.query.genre;
+  if(!genre) {
+    res.send("missing rating");
+  }
+
+    Song.find({genre:genre}, function (err, songs) {
         if (err) throw err;
         res.json(songs);
     });
