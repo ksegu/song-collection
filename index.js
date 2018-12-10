@@ -37,7 +37,7 @@ app.get('/addSong', function(req, res) {
 })
 
 
-// posts song but mongo crashes after addding data
+// posts song , working now!
 app.post('/api/addSong', function(req,res) {
   console.log((req.body));
   if(!req.body) {
